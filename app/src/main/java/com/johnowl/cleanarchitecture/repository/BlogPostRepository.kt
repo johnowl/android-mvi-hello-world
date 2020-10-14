@@ -20,7 +20,7 @@ class BlogPostRepository @Inject constructor(
 
     suspend fun getBlogPosts(): Flow<DataState<List<BlogPost>>> = flow {
         emit(DataState.Loading)
-        delay(1000)
+        delay(1000) // added to view the progress bar in action
         try {
             val networkBlogPosts = blogPostRetrofit.getBlogPosts()
             val posts = blogPostApiMapper.mapFromEntityList(networkBlogPosts)
